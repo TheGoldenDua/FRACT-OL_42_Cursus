@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-static void pixel_put(int x, int y, t_img *img, int color)
+    void pixel_put(int x, int y, t_img *img, int color)
 {
     int offset;
     offset = (y * img->line_len) + (x * (img->bits_per_pxl / 8));
@@ -18,20 +18,24 @@ void handle_pixel(int x, int y, t_fractal *fractal)
      z.x = 0.0;
      z.y = 0.0;
      c.x = scale(x, -2, 2);
-     c.y = scale(x, 2, -2);
+     c.y = scale(y, 2, -2);
     while(i < fractal->itr_def)
     {
         z = somme(square(z), c);
-        if((z.x * z.x) + (z.y * z.y) > fractal->escape_v)
+        if((z.x * z.x) + (z.y * z.y) > 4)
         {
-            color = scale(i, BLACK, WHITE);//the range start from 0 to 42
+            if (i > 6)
+                color = fractal->color * (i * 5);
+            else
+                color = BLACK;
+            // color = scale(i, BLACK, WHITE);//the range start from 0 to 42
             pixel_put(x, y, &fractal->img, color);
             return ;
         }
         ++i;
     }
     //the point is in the mandelbrot set
-    pixel_put(x, y, &fractal->img, PURPLE);
+    pixel_put(x, y, &fractal->img, BLACK);
 }
 
 void render(t_fractal *fractal)

@@ -31,6 +31,7 @@
 #define SILVER  0xC0C0C0
 #define GOLD    0xFFD700
 
+#define COLOR1  0xdc0531
 
 typedef struct s_complex
 {
@@ -42,9 +43,9 @@ typedef struct s_img
 {
     void    *img_ptr;
     char    *pxls_ptr;
-    int bits_per_pxl;
-    int endian;
-    int line_len;   
+    int     bits_per_pxl;
+    int     endian;
+    int     line_len;   
 }t_img;
 
 typedef struct s_fractal
@@ -53,8 +54,11 @@ typedef struct s_fractal
     void    *mlx_connection;
     void    *mlx_window;
     t_img   img;
-    double escape_v;
-    int itr_def;
+    int     itr_def;
+    int     color;
+    int     zoom;
+    int     shift_x;
+    int     shift_y;
 }t_fractal;
 
 
@@ -67,6 +71,7 @@ void render(t_fractal *fractal);
 void handle_pixel(int x, int y, t_fractal *fractal);
 void data_init(t_fractal *fractal);
 void    fractol_init(t_fractal *fractal);
+int handle_shift(int keycode, t_fractal *fractal);
 
 
 #endif
