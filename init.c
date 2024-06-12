@@ -9,6 +9,7 @@ static void error_malloc(void)
 void data_init(t_fractal *fractal)
 {
     fractal->escape_v = 4; // 2^2
+    fractal->itr_def = 42;
 }
 
 void    fractol_init(t_fractal *fractal)
@@ -31,5 +32,5 @@ void    fractol_init(t_fractal *fractal)
         free(fractal->mlx_connection);
         error_malloc();//TOD
     }
-    fractal->img.pxls_ptr = mlx_get_data_addr(fractal->img.img_ptr, fractal->img.bits_per_pxl, fractal->img.line_len, fractal->img.endian);     
+    fractal->img.pxls_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pxl, &fractal->img.line_len, &fractal->img.endian);     
 }
