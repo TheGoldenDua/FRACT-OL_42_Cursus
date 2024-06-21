@@ -57,7 +57,7 @@ typedef struct s_fractal
     t_img   img;
     double     itr_def;
     int     color;
-    int     zoom;
+    double     zoom;
     double     shift_x;
     double     shift_y;
 }t_fractal;
@@ -72,6 +72,8 @@ void render(t_fractal *fractal);
 void handle_pixel(int x, int y, t_fractal *fractal);
 void data_init(t_fractal *fractal);
 void    fractol_init(t_fractal *fractal);
+int close_handler(t_fractal *fractal);
+int mouse_handler(int button, int x, int y,t_fractal *fractal);
 int key_handler(int keycode, t_fractal *fractal);
 
 #endif

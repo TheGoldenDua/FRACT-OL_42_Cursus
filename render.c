@@ -17,8 +17,8 @@ void handle_pixel(int x, int y, t_fractal *fractal)
      i = 0;
      z.x = 0.0;
      z.y = 0.0;
-     c.x = scale(x, -2, 2,WIDTH) + fractal->shift_x;
-     c.y = scale(y, 2, -2,HEIGHT) + fractal->shift_y;
+     c.x = (scale(x, -2, 2,WIDTH) * fractal->zoom)+ fractal->shift_x;
+     c.y = (scale(y, 2, -2,HEIGHT) * fractal->zoom) + fractal->shift_y;
     while(i < fractal->itr_def)
     {
         z = somme(square(z), c);
