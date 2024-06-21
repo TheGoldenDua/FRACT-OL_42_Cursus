@@ -17,18 +17,18 @@ void handle_pixel(int x, int y, t_fractal *fractal)
      i = 0;
      z.x = 0.0;
      z.y = 0.0;
-     c.x = scale(x, -2, 2);
-     c.y = scale(y, 2, -2);
+     c.x = scale(x, -2, 2,WIDTH) + fractal->shift_x;
+     c.y = scale(y, 2, -2,HEIGHT) + fractal->shift_y;
     while(i < fractal->itr_def)
     {
         z = somme(square(z), c);
         if((z.x * z.x) + (z.y * z.y) > 4)
         {
-            if (i > 6)
-                color = fractal->color * (i * 5);
-            else
-                color = BLACK;
-            // color = scale(i, BLACK, WHITE);//the range start from 0 to 42
+            // if (i > 6)
+            //     color = fractal->color * (i * 5);
+            // else
+            //     color = BLACK;
+            color = scale(i, BLACK, WHITE,fractal->itr_def);//the range start from 0 to 42
             pixel_put(x, y, &fractal->img, color);
             return ;
         }

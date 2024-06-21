@@ -18,17 +18,17 @@ t_complex square(t_complex z)
     return (result);
 }
 
-double scale(double unscaled_num, double new_min, double new_max)
+double scale(double unscaled_num, double new_min, double new_max,double old_max)
 {
     double old_min;
-    double old_max;
+    // double old_max;
     // double old_range;
     // double new_range;
     // double old_position;
     // double result;
 
     old_min = 0;
-    old_max = 799;
+    // old_max = 799;
     // old_range = old_max - old_min;
     // new_range = new_max - new_min;
     // old_position = (unscaled_num - old_min) / old_range;

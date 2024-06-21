@@ -8,11 +8,18 @@ static void error_malloc(void)
 
 void data_init(t_fractal *fractal)
 {
-    fractal->itr_def = 100;
+    fractal->itr_def = 42;
     fractal->color = COLOR1;
     fractal->zoom = 1;
     fractal->shift_x = 0;
     fractal->shift_y = 0;
+}
+
+static void events_init(t_fractal  *fractal)
+{
+    // mlx_hook(fractal->mlx_window, 05, 0, close_handler, fractal);
+    // mlx_mouse_hook(fractal->mlx_window, mouse_handler, fractal);
+    mlx_key_hook(fractal->mlx_window, key_handler, fractal);
 }
 
 void    fractol_init(t_fractal *fractal)
@@ -37,4 +44,5 @@ void    fractol_init(t_fractal *fractal)
     }
     fractal->img.pxls_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pxl, &fractal->img.line_len, &fractal->img.endian);
     data_init(fractal);
+    events_init(fractal);
 }

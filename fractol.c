@@ -9,8 +9,6 @@ int main(int argc, char **argv)
             fractal.name = argv[1];
             fractol_init(&fractal);
             render(&fractal);
-            mlx_hook(fractal.mlx_window, 2, 0, handle_shift, &fractal);
-            mlx_loop_hook(fractal.mlx_connection, handle_shift, &fractal );
             mlx_loop(fractal.mlx_connection);
     }
     else

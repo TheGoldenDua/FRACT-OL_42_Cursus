@@ -6,6 +6,7 @@
 #include "minilibx-linux/mlx.h"
 #include <unistd.h>
 #include <math.h>
+#include <X11/X.h>
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -54,15 +55,15 @@ typedef struct s_fractal
     void    *mlx_connection;
     void    *mlx_window;
     t_img   img;
-    int     itr_def;
+    double     itr_def;
     int     color;
     int     zoom;
-    int     shift_x;
-    int     shift_y;
+    double     shift_x;
+    double     shift_y;
 }t_fractal;
 
 
-double scale(double unscaled_num, double new_min, double new_max);
+double scale(double unscaled_num, double new_min, double new_max,double old_max);
 t_complex square(t_complex z);
 t_complex somme(t_complex z, t_complex c);
 int	ft_strncmp(char *s1, char *s2, size_t n);
@@ -71,7 +72,6 @@ void render(t_fractal *fractal);
 void handle_pixel(int x, int y, t_fractal *fractal);
 void data_init(t_fractal *fractal);
 void    fractol_init(t_fractal *fractal);
-int handle_shift(int keycode, t_fractal *fractal);
-
+int key_handler(int keycode, t_fractal *fractal);
 
 #endif
