@@ -11,17 +11,14 @@ int close_handler(t_fractal *fractal)
 
 int mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-    if(fractal->zoom > 0.0001f)
-    {
         if(button  == 5)
         {
-            fractal->zoom *= 1.08f;
+            fractal->zoom *= 1.08;
         }
         if (button == 4)
         {
-            fractal->zoom /= 1.08f;
+            fractal->zoom /= 1.08;
         }
-    }
     render(fractal);
     return (0);
 }

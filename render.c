@@ -24,10 +24,6 @@ void handle_pixel(int x, int y, t_fractal *fractal)
         z = somme(square(z), c);
         if((z.x * z.x) + (z.y * z.y) > 4)
         {
-            // if (i > 6)
-            //     color = fractal->color * (i * 5);
-            // else
-            //     color = BLACK;
             color = scale(i, BLACK, WHITE,fractal->itr_def);//the range start from 0 to 42
             pixel_put(x, y, &fractal->img, color);
             return ;
