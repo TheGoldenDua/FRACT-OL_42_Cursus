@@ -60,8 +60,8 @@ typedef struct s_fractal
     double     zoom;
     double     shift_x;
     double     shift_y;
-    // double     julia_x;
-    // double     julia_y;
+    double     julia_x;
+    double     julia_y;
 }t_fractal;
 
 

@@ -19,3 +19,31 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		return (0);
 	return (str1[i] - str2[i]);
 }
+
+double ft_atod(char *str)
+{
+    double res;
+	int signe;
+    double j;
+
+    res = 0;
+	signe = 1;
+	while(*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if(*str == '+' || *str == '-')
+	{
+		if(*str++ == '-')
+			signe = -signe;
+	}
+	while(*str && *str >= '0' && *str <= '9')
+        res = (res * 10) + (*str++ - '0');
+	if(*str == '.')
+		str++;
+    j = 10;
+	while(*str && *str >= '0' && *str <= '9')
+    {
+        res = res + (*str++ - '0') / j;
+        j *= 10;
+    }
+	return (res * signe);
+}

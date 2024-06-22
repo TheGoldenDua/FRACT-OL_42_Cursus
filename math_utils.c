@@ -26,30 +26,3 @@ double scale(double unscaled_num, double new_min, double new_max,double old_max)
     return ((new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min );
 }
 
-double ft_atod(char *str)
-{
-    double res;
-	int signe;
-    double j;
-
-    res = 0;
-	signe = 1;
-	while(*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if(*str == '+' || *str == '-')
-	{
-		if(*str++ == '-')
-			signe = -signe;
-	}
-	while(*str && *str >= '0' && *str <= '9')
-        res = (res * 10) + (*str++ - '0');
-	if(*str == '.')
-		str++;
-    j = 10;
-	while(*str && *str >= '0' && *str <= '9')
-    {
-        res = res + (*str++ - '0') / j;
-        j *= 10;
-    }
-	return (res * signe);
-}
