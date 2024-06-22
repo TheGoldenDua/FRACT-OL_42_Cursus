@@ -1,8 +1,9 @@
-CC = cc 
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-RM = rm -rf
+MLXFLAGS = -Lminilibx -lmlx -lX11 -lXext
+RM = rm -f
 
-Name = fractol
+NAME = fractol
 
 SRCS = fractol.c events.c init.c render.c math_utils.c utils.c
 OBJS = $(SRCS:.c=.o)
@@ -10,14 +11,17 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -lmlx -lX11 -lXext -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
 
-fclean: clean
-	$(rm) $(NAME)
+fclean:
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

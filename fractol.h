@@ -75,7 +75,7 @@ void handle_pixel(int x, int y, t_fractal *fractal);
 void data_init(t_fractal *fractal);
 void    fractol_init(t_fractal *fractal);
 int close_handler(t_fractal *fractal);
-int mouse_handler(int button, int x, int y,t_fractal *fractal);
+int mouse_handler(int button, int x, int y, t_fractal *fractal);
 int key_handler(int keycode, t_fractal *fractal);
 double ft_atod(char *str);
 
