@@ -1,4 +1,16 @@
- #include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/23 14:02:49 by del-ganb          #+#    #+#             */
+/*   Updated: 2024/06/23 19:07:53 by del-ganb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol.h"
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {
@@ -20,30 +32,48 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (str1[i] - str2[i]);
 }
 
-double ft_atod(char *str)
+double	ft_atod(char *str)
 {
-    double res;
-	int signe;
-    double j;
+	double	res;
+	int		signe;
+	double	j;
 
-    res = 0;
+	res = 0;
 	signe = 1;
-	while(*str == ' ' || (*str >= 9 && *str <= 13))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	if(*str == '+' || *str == '-')
+	if (*str == '+' || *str == '-')
 	{
-		if(*str++ == '-')
+		if (*str++ == '-')
 			signe = -signe;
 	}
-	while(*str && *str >= '0' && *str <= '9')
-        res = (res * 10) + (*str++ - '0');
-	if(*str == '.')
+	while (*str && *str >= '0' && *str <= '9')
+		res = (res * 10) + (*str++ - '0');
+	if (*str == '.')
 		str++;
-    j = 10;
-	while(*str && *str >= '0' && *str <= '9')
-    {
-        res = res + (*str++ - '0') / j;
-        j *= 10;
-    }
+	j = 10;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		res = res + (*str++ - '0') / j;
+		j *= 10;
+	}
 	return (res * signe);
+}
+
+int	is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13) || str[i] == '+'
+		|| str[i] == '-')
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+		i++;
+	if (str[i] == '.' && i++)
+		while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+			i++;
+	if (!str[i])
+		return (0);
+	return (1);
 }
