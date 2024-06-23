@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:03:01 by del-ganb          #+#    #+#             */
-/*   Updated: 2024/06/23 14:59:27 by del-ganb         ###   ########.fr       */
+/*   Updated: 2024/06/23 19:56:15 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void	render(t_fractal *fractal)
 		}
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
-			fractal->img.img_ptr, 0, 0);
+		fractal->img.img_ptr, 0, 0);
 }
