@@ -6,7 +6,7 @@
 /*   By: del-ganb <del-ganb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:03:29 by del-ganb          #+#    #+#             */
-/*   Updated: 2024/06/23 20:00:00 by del-ganb         ###   ########.fr       */
+/*   Updated: 2024/06/23 20:24:38 by del-ganb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_args(char **argv, t_fractal *fractal)
 	}
 	else
 	{
-		write(1, "the parameters has to be digits", 30);
+		write(1, "the parameters has to be digits\n", 32);
 		exit(1);
 	}
 }
